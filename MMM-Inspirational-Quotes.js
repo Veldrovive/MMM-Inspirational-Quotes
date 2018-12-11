@@ -3,8 +3,7 @@ Module.register("MMM-Inspirational-Quotes", {
 	defaults: {
 		"update_interval": 0,
 		"transition_interval": 2000,
-		"size": "500px",
-		"display_header": false
+		"size": "500px"
 	},
 
 	start: function(){
@@ -43,10 +42,10 @@ Module.register("MMM-Inspirational-Quotes", {
 		return new Promise((resolve, reject) => {
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function() {
-			    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			    	self.quote_url = xmlhttp.response;
-			        resolve(xmlhttp.response);
-			    }
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					self.quote_url = xmlhttp.response;
+					resolve(xmlhttp.response);
+				}
 			};
 
 			xmlhttp.open("GET", url, true);
@@ -58,16 +57,16 @@ Module.register("MMM-Inspirational-Quotes", {
 		const self = this;
 
 		const wrapper = document.createElement("div");
-        wrapper.className = "wrapper";
-        if(self.quote_url.length > 0){
-        	photo = document.createElement("img")
-        	photo.src = self.quote_url
-        	photo.style.height = self.size
-        	photo.style.width = self.size
-        	wrapper.appendChild(photo)
-        }
+		wrapper.className = "wrapper";
+		if(self.quote_url.length > 0){
+			photo = document.createElement("img")
+			photo.src = self.quote_url
+			photo.style.height = self.size
+			photo.style.width = self.size
+			wrapper.appendChild(photo)
+		}
 
-        return wrapper;
+		return wrapper;
 	},
 
 	notificationReceived: function(notification, payload){
